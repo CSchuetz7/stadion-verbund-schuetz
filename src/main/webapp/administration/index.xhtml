@@ -27,22 +27,31 @@
                     <hr/>
                     <h:form id="AdminFenster" rendered="#{benutzerModel.adminIstAngemeldet()}">
                         <div class="form-group">
-                            <hr/>
                             <label>Select</label>
                             <h:inputText class="form-control" value="#{administrationModel.selectString}"/>
                         </div>
                         <h:commandButton style="margin-bottom:20px;" id="SelectId" value="Select starten"
-                                         class="btn btn-success btn-lg btn-block" action="#{administrationModel.select(administrationModel.selectString)}"/>
+                                         class="btn btn-success mb-2 btn-block"
+                                         action="#{administrationModel.select(administrationModel.selectString)}"/>
                         <div class="form-group">
-                            <label>Ergebnis</label>
+                            <label>Ergebnis: </label>
                             <h:outputText value="#{administrationModel.resultSelectString}"/>
                         </div>
                         <hr/>
                         <h:commandButton style="margin-bottom:20px;" id="TestBuchungId" value="Test Buchung"
-                                         class="btn btn-info btn-lg btn-block" action="#{administrationModel.testBuchung()}"/>
+                                         class="btn btn-info mb-2 btn-block"
+                                         action="#{administrationModel.testBuchung()}"/>
+                        <hr/>
+                        <h:commandButton style="margin-bottom:20px;" id="AnlegenZufallId" value="Zufallsstadion anlegen"
+                                         class="btn btn-default mb-2 btn-block"
+                                         action="#{stadionModel.erzeugeZufallsStadion()}"/>
+                        <hr/>
+                        <h:commandButton id="registerd" value="Registriere Gast" class="btn btn-warning mb-2 btn-block"
+                                         action="#{benutzerModel.erzeugeGast()}"/>
                         <hr/>
                         <h:commandButton style="margin-bottom:20px;" id="LoeschenId" value="Lösche Alles"
-                                         class="btn btn-danger btn-lg btn-block" action="#{administrationModel.loescheAlles()}"/>
+                                         class="btn btn-danger mb-2 btn-block"
+                                         action="#{administrationModel.loescheAlles()}"/>
                     </h:form>
                 </div>
             </div>

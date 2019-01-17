@@ -119,11 +119,6 @@ public class BuchungService {
                             do {
                                 bestesStadion = sortiertePlaetzeMap.get(mapIdx).getValue();
                                 mapIdx++;
-                            /*Map<Integer, Stadion> sortiertePlaetzeMap = new TreeMap<>(plaetzeMap);
-                            int highestKey = ((TreeMap<Integer, Stadion>) sortiertePlaetzeMap).lastKey()-1;
-                            System.out.println(highestKey);
-                            Map.Entry<Integer, Stadion> bestesStadionMap = ((TreeMap<Integer, Stadion>) sortiertePlaetzeMap).lastEntry();
-                            bestesStadion = bestesStadionMap.getValue(); */
                             } while (pruefeSpielDatumVerfuegbar(spielDatum, bestesStadion).size() > 0 || mapIdx > sortiertePlaetzeMap.size());
                             Buchung buchung = new Buchung(spielId, spielDatum, bestesStadion);
                             Buchung tempBuchung = this.anlegenBuchungWebService(buchung);

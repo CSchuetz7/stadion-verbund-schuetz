@@ -43,7 +43,6 @@ public class AdministrationService {
       Query q4 = em.createQuery("DELETE FROM Buchung");
       Query q5 = em.createQuery("DELETE FROM Stadion ");
       Query q6 = em.createQuery("DELETE FROM Benutzer ");
-      Query q7 = em.createNativeQuery("DROP TABLE Stadion");
 
       q1.executeUpdate();
       q2.executeUpdate();
@@ -51,7 +50,6 @@ public class AdministrationService {
       q4.executeUpdate();
       q5.executeUpdate();
       q6.executeUpdate();
-      q7.executeUpdate();
 
       benutzerModel.abmelden();
 

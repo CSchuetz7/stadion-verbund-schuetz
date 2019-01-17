@@ -14,17 +14,18 @@
     <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>  -->
 
 
-
+<!--
         <persistence-unit name="stadionVerbundPU" transaction-type="JTA">
             <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
             <jta-data-source>java:/jboss/amazing_morse</jta-data-source>
             <exclude-unlisted-classes>false</exclude-unlisted-classes>
             <properties>
-                <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>
                 <property name="hibernate.hbm2ddl.auto" value="update"/>
                 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
             </properties>
         </persistence-unit>
+
+        -->
 
 
 
@@ -41,7 +42,7 @@
 -->
 
 
-<!--
+
 
             <persistence-unit name="stadionVerbundPU" transaction-type="JTA">
                 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -53,7 +54,7 @@
                 </properties>
             </persistence-unit>
 
--->
+
 
 
     </persistence>

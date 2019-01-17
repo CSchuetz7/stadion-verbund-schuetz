@@ -92,8 +92,9 @@ public class TicketService implements TicketServiceIF, Serializable {
             List<Ticket> returnTicket = stub.erstelleTickets(tickets);
             if (returnTicket == null) {
                 throw new KeineRueckmeldungBeimTicketVersenden("Keine Rückmeldung beim Ticket versenden");
+            } else {
+                setzeTicketErstelltBeiBuchung(buchung, true);
             }
-            setzeTicketErstelltBeiBuchung(buchung, true);
         } catch (Exception e) {
             logger.log(Level.INFO, "Exception: " + e.toString());
         }
