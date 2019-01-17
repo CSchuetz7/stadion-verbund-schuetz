@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.0"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+   <!-- <navigation-rule>
+        <from-view-id>/anmelden.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>profil</from-outcome>
+            <to-view-id>/profil.xhtml</to-view-id>
+            <from-outcome>registrieren</from-outcome>
+            <to-view-id>/registrieren.xhtml</to-view-id>
+            <from-outcome>stadion</from-outcome>
+            <to-view-id>/stadion/index.xhtml</to-view-id>
+            <from-outcome>buchung</from-outcome>
+            <to-view-id>/buchung/index.xhtml</to-view-id>
+            <from-outcome>administration</from-outcome>
+            <to-view-id>/administration.xhtml</to-view-id>
+            <from-outcome>angelegt</from-outcome>
+            <to-view-id>/administration.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>-->
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+
+        <navigation-case>
+            <from-outcome>anmelden</from-outcome>
+            <to-view-id>/anmelden.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>profil</from-outcome>
+            <to-view-id>/profil.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registrieren</from-outcome>
+            <to-view-id>/registrieren.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>stadionAnlegen</from-outcome>
+            <to-view-id>/stadion/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>stadionAnzeigen</from-outcome>
+            <to-view-id>/stadion/anzeigen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>stadionAnlegen</from-outcome>
+            <to-view-id>/stadion/anlegen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>buchungAnzeigen</from-outcome>
+            <to-view-id>/buchung/anzeigen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>buchungAnlegen</from-outcome>
+            <to-view-id>/buchung/anlegen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>administration</from-outcome>
+            <to-view-id>/administration.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>platz</from-outcome>
+            <to-view-id>/sitzplatz/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>kategorieAnlegen</from-outcome>
+            <to-view-id>/sitzplatz/kategorieAnlegen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>blockPlatzAnlegen</from-outcome>
+            <to-view-id>/sitzplatz/blockPlatzAnlegen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>blockPlatzAnzeigen</from-outcome>
+            <to-view-id>/sitzplatz/blockPlatzAnzeigen.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>kategorieAnzeigen</from-outcome>
+            <to-view-id>/sitzplatz/kategorieAnzeigen.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

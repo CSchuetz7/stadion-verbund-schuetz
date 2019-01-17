@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewAction action="#{sitzplatzModel.initialisieren()}"/>
+</f:metadata>
+
+<h:body>
+    <ui:composition template="../WEB-INF/templates/basisVorlage.xhtml">
+        <ui:define name="navigation">
+            <ui:include src="../navigation.xhtml">
+            </ui:include>
+        </ui:define>
+        <ui:define name="seiteninhalt">
+            <h:form id="blockPlatzAnlegenForm" rendered="#{benutzerModel.adminIstAngemeldet()}">
+                <div class="container">
+                    <div class="align-middle col-md-6 offset-md-3 mt-3">
+                        <h:messages
+                                style="color:white; background-color: #ff523e; margin-bottom:1em; list-style: none; height:auto"
+                                class="form-control" globalOnly="false" showDetail="false"
+                                showSummary="true" errorClass="err" warnClass="warn" infoClass="info"/>
+                        <div class="form-group">
+                            <label>Stadion</label>
+                            <h:selectOneMenu value="#{sitzplatzModel.stadion}"
+                                             onchange="#{sitzplatzModel.blockPlatzAnlegenStadionVeraenderung(sitzplatzModel.stadion)}"
+                                             disabled="#{sitzplatzModel.inBearbeitungBlockPlatz}"
+                                             class="form-control custom-select my-1 mr-sm-2">
+                                <f:converter binding="#{sitzplatzModel.stadionTypKonv}"/>
+                                <f:selectItems value="#{sitzplatzModel.stadionListe}" var="st" itemLabel="#{st.name}"/>
+                                <f:ajax listener="#{sitzplatzModel.blockPlatzAnlegenStadionVeraenderung(sitzplatzModel.stadion)}"
+                                        execute="@this" immediate="true" render="@all"/>
+                            </h:selectOneMenu>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Kategorie</label>
+                            <h:selectOneMenu value="#{sitzplatzModel.kategorie}"
+                                             class="form-control custom-select my-1 mr-sm-2">
+                                <f:converter binding="#{sitzplatzModel.kategorieTypKonv}"/>
+                                <f:selectItems value="#{sitzplatzModel.kategorieStadionListe}" var="ka"
+                                               itemLabel="#{ka.name}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <h3>Block</h3>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <h:inputText class="form-control" value="#{sitzplatzModel.blockName}">
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label>Ausrichtung</label>
+                            <h:selectOneMenu styleClass="custom-select my-1 mr-sm-2"
+                                             value="#{sitzplatzModel.ausrichtung}">
+                                <f:selectItem itemLabel="Nord" itemValue="Nord"/>
+                                <f:selectItem itemLabel="Nord-Ost" itemValue="Nord-Ost"/>
+                                <f:selectItem itemLabel="Ost" itemValue="Ost"/>
+                                <f:selectItem itemLabel="Süd-Ost" itemValue="Süd-Ost"/>
+                                <f:selectItem itemLabel="Süd" itemValue="Süd"/>
+                                <f:selectItem itemLabel="Süd-West" itemValue="Süd-West"/>
+                                <f:selectItem itemLabel="West" itemValue="West"/>
+                                <f:selectItem itemLabel="Nord-West" itemValue="Nord-West"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <h3>Platz</h3>
+                        <div class="form-group">
+                            <label>Plätze je Reihe</label>
+                            <h:inputText class="form-control" value="#{sitzplatzModel.anzahlPlaetzeProReihe}"
+                                         disabled="#{sitzplatzModel.inBearbeitungBlockPlatz}">
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label>Reihen</label>
+                            <h:inputText class="form-control" value="#{sitzplatzModel.anzahlReihe}"
+                                         disabled="#{sitzplatzModel.inBearbeitungBlockPlatz}">
+                            </h:inputText>
+                        </div>
+                        <h:commandButton style="margin-bottom:20px;" id="AnlegenId" value="Anlegen"
+                                         class="btn btn-success btn-lg btn-block"
+                                         action="#{sitzplatzModel.blockPlatzAnlegen()}"
+                                         rendered="#{!sitzplatzModel.inBearbeitungBlockPlatz}"/>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="align-middle col-md-12 mt-3">
+                            <h:dataTable var="bl" rendered="#{not empty sitzplatzModel.findeAlleBloecke()}"
+                                         value="#{sitzplatzModel.findeAlleBloecke()}"
+                                         class="table table-striped table-bordered dt-responsive nowrap" border="1">
+                                <h:column>
+                                    <f:facet name="header">
+                                        Stadion
+                                    </f:facet>
+                                    <h:outputText value="#{bl.stadionBlock.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Kategorie
+                                    </f:facet>
+                                    <h:outputText value="#{bl.kategorie.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Name
+                                    </f:facet>
+                                    <h:outputText value="#{bl.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Ausrichtung
+                                    </f:facet>
+                                    <h:outputText value="#{bl.ausrichtung}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        Plätze
+                                    </f:facet>
+                                    <h:dataTable var="pl" value="#{bl.plaetze}"
+                                                 class="table table-striped table-bordered dt-responsive nowrap"
+                                                 border="1">
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Reihen
+                                            </f:facet>
+                                            <h:outputText value="#{pl.anzahlReihe}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Sitze je Reihe
+                                            </f:facet>
+                                            <h:outputText value="#{pl.anzahlSitzeReihe}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                Gesamtanzahl
+                                            </f:facet>
+                                            <h:outputText value="#{pl.anzahlSitzeReihe * pl.anzahlReihe}"/>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:column>
+                                <h:column rendered="#{benutzerModel.adminIstAngemeldet()}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Aktionen"/>
+                                    </f:facet>
+                                    <h:commandButton class="btn btn-danger btn-sm btn-block" value="löschen"
+                                                     rendered="#{!sitzplatzModel.inBearbeitungBlockPlatz}"
+                                                     action="#{sitzplatzModel.loescheBlockPlatz(bl)}"/>
+                                    <h:commandButton class="btn btn-info btn-sm btn-block"
+                                                     action="#{sitzplatzModel.inAenderungVorbereitenBlockPlatz(bl)}"
+                                                     rendered="#{!sitzplatzModel.inBearbeitungBlockPlatz}"
+                                                     value="bearbeiten"/>
+                                </h:column>
+                                <f:facet name="footer">
+                                    <h:commandButton class="btn btn-warning btn-sm btn-block"
+                                                     action="#{sitzplatzModel.aendereBlockPlatz()}"
+                                                     rendered="#{sitzplatzModel.inBearbeitungBlockPlatz}"
+                                                     value="Bearbeitung speichern"/>
+                                    <h:commandButton class="btn btn-danger btn-sm btn-block"
+                                                     action="#{sitzplatzModel.aendereBlockPlatzAbbrechen()}"
+                                                     rendered="#{sitzplatzModel.inBearbeitungBlockPlatz}"
+                                                     value="Abbrechen"/>
+                                </f:facet>
+                            </h:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

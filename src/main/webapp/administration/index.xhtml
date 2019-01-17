@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewAction action="#{stadionModel.initialisieren()}"/>
+</f:metadata>
+
+
+<h:body>
+    <ui:composition template="../WEB-INF/templates/basisVorlage.xhtml">
+        <ui:define name="navigation">
+            <ui:include src="../navigation.xhtml">
+            </ui:include>
+        </ui:define>
+        <ui:define name="seiteninhalt">
+            <div class="container">
+                <div class="align-middle col-md-6 offset-md-3 mt-3">
+                    <h:messages
+                            style="color:#ffffff;margin-bottom:5px; list-style: none; height:4em; background-color: #ff5b58;"
+                            class="form-control" globalOnly="false" showDetail="false" for="SelectId"
+                            showSummary="true" errorClass="err" warnClass="warn" infoClass="info"/>
+                    <h3>Administration</h3>
+                    <hr/>
+                    <h:form id="AdminFenster" rendered="#{benutzerModel.adminIstAngemeldet()}">
+                        <div class="form-group">
+                            <hr/>
+                            <label>Select</label>
+                            <h:inputText class="form-control" value="#{administrationModel.selectString}"/>
+                        </div>
+                        <h:commandButton style="margin-bottom:20px;" id="SelectId" value="Select starten"
+                                         class="btn btn-success btn-lg btn-block" action="#{administrationModel.select(administrationModel.selectString)}"/>
+                        <div class="form-group">
+                            <label>Ergebnis</label>
+                            <h:outputText value="#{administrationModel.resultSelectString}"/>
+                        </div>
+                        <hr/>
+                        <h:commandButton style="margin-bottom:20px;" id="TestBuchungId" value="Test Buchung"
+                                         class="btn btn-info btn-lg btn-block" action="#{administrationModel.testBuchung()}"/>
+                        <hr/>
+                        <h:commandButton style="margin-bottom:20px;" id="LoeschenId" value="Lösche Alles"
+                                         class="btn btn-danger btn-lg btn-block" action="#{administrationModel.loescheAlles()}"/>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

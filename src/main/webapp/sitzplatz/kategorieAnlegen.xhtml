@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewAction action="#{sitzplatzModel.initialisieren()}"/>
+</f:metadata>
+
+<h:body>
+    <ui:composition template="../WEB-INF/templates/basisVorlage.xhtml">
+        <ui:define name="navigation">
+            <ui:include src="../navigation.xhtml">
+            </ui:include>
+        </ui:define>
+        <ui:define name="seiteninhalt">
+            <h:form id="kategorieAnlegenForm" rendered="#{benutzerModel.adminIstAngemeldet()}">
+            <div class="container">
+                <div class="align-middle col-md-6 offset-md-3 mt-3">
+                    <h:messages
+                            style="color:white; background-color: #ff523e; margin-bottom:1em; list-style: none; height:auto"
+                            class="form-control" globalOnly="false" showDetail="false"
+                            showSummary="true" errorClass="err" warnClass="warn" infoClass="info"/>
+                    <h3>Kategorie anlegen</h3>
+                    <hr/>
+                        <div class="form-group">
+                            <label>Stadion</label>
+                            <h:selectOneMenu value="#{sitzplatzModel.stadion}" class="form-control custom-select my-1 mr-sm-2" disabled="#{sitzplatzModel.inBearbeitungKategorie}" >
+                                <f:converter binding="#{sitzplatzModel.stadionTypKonv}"/>
+                                <f:selectItems value="#{sitzplatzModel.stadionListe}" var="st" itemLabel="#{st.name}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <label>Kategorie-Name</label>
+                            <h:inputText class="form-control" value="#{sitzplatzModel.kategorieName}">
+                            </h:inputText>
+                        </div>
+                        <div class="form-group">
+                            <label>Kategorie-Nummer</label>
+                            <h:inputText class="form-control" value="#{sitzplatzModel.kategorienr}"/>
+                        </div>
+                    <div class="form-group">
+                        <label>Kategorie-Preis</label>
+                        <h:inputText class="form-control" value="#{sitzplatzModel.preis}"/>
+                    </div>
+                        <div class="form-group">
+                            <label for="stehplatzId">Stehplatz</label>
+                            <h:selectBooleanCheckbox id="stehplatzId" class="form-control form-check" value="#{sitzplatzModel.stehplatz}">
+                            </h:selectBooleanCheckbox>
+                        </div>
+                        <h:commandButton rendered="#{!sitzplatzModel.inBearbeitungKategorie}" style="margin-bottom:20px;" id="AnlegenId" value="Anlegen"
+                                         class="btn btn-success btn-lg btn-block" action="#{sitzplatzModel.kategorieAnlegen()}"/>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="align-middle col-md-12 mt-3">
+                        <h:dataTable var="ka" rendered="#{not empty sitzplatzModel.findeAlleKategorien()}" value="#{sitzplatzModel.findeAlleKategorien()}"
+                                     class="table table-striped table-bordered dt-responsive nowrap" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    Stadion
+                                </f:facet>
+                                <h:outputText value="#{ka.stadionKategorie.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Kategorie-Name
+                                </f:facet>
+                                <h:outputText value="#{ka.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Kategorie-Nummer
+                                </f:facet>
+                                <h:outputText value="#{ka.kategorienr}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Kategorie-Preis
+                                </f:facet>
+                                <h:outputText value="#{ka.preis}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    Stehplatz
+                                </f:facet>
+                                <h:outputText value="#{ka.stehplatz}"/>
+                            </h:column>
+                            <h:column rendered="#{benutzerModel.adminIstAngemeldet()}">
+                                <f:facet name="header">
+                                    <h:outputText value="Aktionen"/>
+                                </f:facet>
+                                <h:commandButton class="btn btn-danger btn-sm btn-block" value="löschen"  rendered="#{!sitzplatzModel.inBearbeitungKategorie}"
+                                                 action="#{sitzplatzModel.loescheKategorie(ka)}"/>
+                                <h:commandButton class="btn btn-info btn-sm btn-block" action="#{sitzplatzModel.inAenderungVorbereitenKategorie(ka)}" rendered="#{!sitzplatzModel.inBearbeitungKategorie}" value="bearbeiten"/>
+                            </h:column>
+                            <f:facet name="footer">
+                                <h:commandButton class="btn btn-warning btn-sm btn-block" action="#{sitzplatzModel.aendereKategorie()}" rendered="#{sitzplatzModel.inBearbeitungKategorie}"
+                                                 value="Bearbeitung speichern"/>
+                                <h:commandButton class="btn btn-danger btn-sm btn-block" action="#{sitzplatzModel.aendereKategorieAbbrechen()}" rendered="#{sitzplatzModel.inBearbeitungKategorie}"
+                                                 value="Abbrechen"/>
+                            </f:facet>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

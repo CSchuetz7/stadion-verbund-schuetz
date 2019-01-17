@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="WEB-INF/templates/basisVorlage.xhtml">
+    <ui:define name="navigation">
+        <ui:include src="navigation.xhtml">
+        </ui:include>
+    </ui:define>
+    <ui:define name="seiteninhalt">
+        <div class="container">
+            <div class="row">
+                <div class="align-middle col-md-10 offset-md-1 mt-3">
+                    <h1>Hallo, #{benutzerModel.benutzer.name}!</h1>
+                    <p>Hier sehen Sie ihre Profil Daten:</p>
+                    <h:dataTable value="#{benutzerModel.benutzer}"
+                                 class="table table-striped table-bordered dt-responsive nowrap" border="1">
+                        <h:column>
+                            <f:facet name="header">
+                                Name
+                            </f:facet>
+                            <h:outputText value="#{benutzerModel.benutzer.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Adresse
+                            </f:facet>
+                            <h:outputText
+                                    value="#{benutzerModel.benutzer.adresse.strassenname} #{benutzerModel.benutzer.adresse.hausnummer}, #{benutzerModel.benutzer.adresse.plz} #{benutzerModel.benutzer.adresse.ort} "/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Email
+                            </f:facet>
+                            <h:outputText value="#{benutzerModel.benutzer.email}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <div class="container">
+                        <div class="row">
+                            <div class="align-middle col-md-8 offset-md-2 mt-3">
+                                <details>
+                                    <summary>Informationen zum Verwenden des Stadionverbund-Systems</summary>
+                                    <hr/>
+                                    <h6>Anlegen eines kompletten Stadions mit Kategorie und Block und Platz</h6>
+                                    <ul style="list-style: none">
+                                        <li>1. Zuerst ein Stadion anlegen</li>
+                                        <li>2. Kategorie für das jeweilige Stadion erstellen</li>
+                                        <li>3. Block und Platz erstellen für das jeweilige Stadion</li>
+                                    </ul>
+                                    <hr/>
+                                    <h6>Löschen eines Stadions</h6>
+                                    <div>
+                                        Wenn ein komplettes Stadion erstellt worden ist muss darauf geachtet werden, dass das Stadion bei keiner Buchung hinterlegt ist. Zuvor muss also die Buchung gelöscht werden wenn möglich. Sollte es keine Buchung zum Stadion geben wird beim Löschen des Stadions alle dazugehörigen Kategorien, Blöcke und Plätze gelöscht.
+                                    </div>
+                                    <hr/>
+                                    <h6>Buchung</h6>
+                                    <div>
+                                        Über den Reiten Buchung können Sie eine neue Buchung erstellen.
+                                        Wenn beim Versenden der Tickets Probleme auftreten können diese
+                                        über den Button "Ticket übermitteln" nochmals gesendet werden.
+                                        Die Buchung kann solange gelöscht werden solange die Tickets
+                                        nicht übermittelt worden sind.
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
+

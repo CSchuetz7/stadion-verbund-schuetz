@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:form>
+    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e8e3dc">
+        <!--<img width="120" height="80" src="./resources/images/StadionverbundSchuetz.png"/>-->
+        <a class="navbar-brand mb-0 h1" href="#">Stadionverbund Schütz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="px-2"><h:link class="nav-link" rendered="#{!benutzerModel.istAngemeldet()}"
+                            value="Registrieren" outcome="/registrieren.xhtml"/></li>
+                <li class="px-2"><h:link class="nav-link" rendered="#{!benutzerModel.istAngemeldet()}"
+                            value="Anmelden" outcome="/anmelden.xhtml"/></li>
+                <li class="px-2"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                            value="Profil" outcome="/profil.xhtml"/></li>
+                <li class="nav-item dropdown">
+                    <h:link rendered="#{benutzerModel.istAngemeldet()}"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkStadion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Stadion
+                    </a></h:link>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkStadion">
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.adminIstAngemeldet()}"
+                                                         value="Stadion verwalten" outcome="/stadion/anlegen.xhtml"/></a>
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                                                         value="Stadien anzeigen" outcome="/stadion/anzeigen.xhtml"/></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <h:link rendered="#{benutzerModel.istAngemeldet()}"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSitzplatz" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sitzplatz
+                    </a></h:link>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSitzplatz">
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.adminIstAngemeldet()}"
+                                                         value="Kategorie verwalten" outcome="/sitzplatz/kategorieAnlegen.xhtml"/></a>
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                                                         value="Kategorie anzeigen" outcome="/sitzplatz/kategorieAnzeigen.xhtml"/></a>
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.adminIstAngemeldet()}"
+                                                         value="Block/Platz verwalten" outcome="/sitzplatz/blockPlatzAnlegen.xhtml"/></a>
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                                                         value="Block/Platz anzeigen" outcome="/sitzplatz/blockPlatzAnzeigen.xhtml"/></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <h:link rendered="#{benutzerModel.istAngemeldet()}"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkBuchung" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Buchung
+                    </a></h:link>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkBuchung">
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                                                         value="Buchung anlegen" outcome="/buchung/anlegen.xhtml"/></a>
+                        <a class="dropdown-item"><h:link class="nav-link" rendered="#{benutzerModel.istAngemeldet()}"
+                                                         value="Buchungen anzeigen" outcome="/buchung/anzeigen.xhtml"/></a>
+                    </div>
+                </li>
+                <li class="px-2"><h:link class="nav-link" rendered="#{benutzerModel.adminIstAngemeldet()}"
+                            value="Administration" outcome="/administration/index.xhtml"/></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <c:if test="#{benutzerModel.istAngemeldet()}">
+                    <li class="px-2"><a class="navbar-light">angemeldet als, <b>#{session.getAttribute("benutzer").name}</b></a>
+                    </li>
+                    <li class="px-2"><h:commandLink value="Abmelden" action="#{benutzerModel.abmelden()}"/></li>
+                </c:if>
+            </ul>
+        </div>
+    </nav>
+</h:form>
+</html>

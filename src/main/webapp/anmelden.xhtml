@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="WEB-INF/templates/basisVorlage.xhtml">
+        <ui:define name="navigation">
+            <ui:include src="navigation.xhtml">
+            </ui:include>        
+        </ui:define>
+        <ui:define name="seiteninhalt">
+            <div class="container mx-auto">
+            <div class="align-middle col-md-6 offset-md-3 mt-3">
+                <h:form id="AnmeldeFenster">
+                    <h:message style="background-color:red; color:white;margin-bottom:10px;" class="form-control"
+                               for="AnmeldeId"></h:message>
+                        <div class="form-group">
+                                <label>E-Mail</label>
+                                <h:inputText class="form-control" value="#{benutzerModel.email}"/>
+                        </div>
+                        <div class="form-group">
+                                <label>Password</label>
+                                <h:inputSecret class="form-control" value="#{benutzerModel.passwort}"/>
+                        </div>
+                    <h:commandButton id="AnmeldeId" class="btn btn-success btn-lg btn-block" action="#{benutzerModel.pruefeAnmeldeinfo()}" type="submit" value="Anmelden"/>
+                    
+                </h:form>
+            </div>
+        </div>
+        </ui:define>
+    </ui:composition>
+</html>
+

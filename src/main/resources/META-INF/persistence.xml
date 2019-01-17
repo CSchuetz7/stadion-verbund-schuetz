@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+
+<!-- wsimport -s ./src/main/java -p de.wsdl.ticketEckert http://im-lamport:8080/sportverband-0.1/SpielplanAnzeigenService?WSDL -->
+
+    <!--
+    <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
+    <property name="javax.persistence.schema-generation.scripts.create-target" value="sampleCreate.ddl"/>
+    <property name="javax.persistence.schema-generation.scripts.drop-target" value="sampleDrop.ddl"/>
+    <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+    <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:sampleDB;create=true"/>
+    <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>  -->
+
+    <!--
+
+        <persistence-unit name="stadionVerbundPU" transaction-type="JTA">
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            <jta-data-source>java:/jboss/amazing_morse</jta-data-source>
+            <exclude-unlisted-classes>false</exclude-unlisted-classes>
+            <properties>
+                <property name="javax.persistence.sql-load-script-source" value="insert.sql"/>
+                <property name="hibernate.hbm2ddl.auto" value="update"/>
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+            </properties>
+        </persistence-unit>
+
+-->
+
+<!--
+      <persistence-unit name="stadionVerbundPU" transaction-type="JTA">
+            <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+            <jta-data-source>java:/jboss/gigantic_austin</jta-data-source>
+            <exclude-unlisted-classes>false</exclude-unlisted-classes>
+            <properties>
+                <property name="hibernate.hbm2ddl.auto" value="update"/>
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+            </properties>
+        </persistence-unit>
+-->
+
+
+
+
+            <persistence-unit name="stadionVerbundPU" transaction-type="JTA">
+                <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+                <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+                <exclude-unlisted-classes>false</exclude-unlisted-classes>
+                <properties>
+                    <property name="hibernate.hbm2ddl.auto" value="update"/>
+                    <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+                </properties>
+            </persistence-unit>
+
+
+
+
+    </persistence>
+
+
+            <!--
+            <persistence-unit name="YOUR_OTH_PU_NAME_HERE" transaction-type="JTA">
+                <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+                <jta-data-source>java:jboss/datasources/YOUR_OTH_PU_NAME_HERE</jta-data-source>
+                <exclude-unlisted-classes>false</exclude-unlisted-classes>
+                <properties>
+                    <property name="hibernate.hbm2ddl.auto" value="update"/>
+                    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+                </properties>
+            </persistence-unit>
+            -->
