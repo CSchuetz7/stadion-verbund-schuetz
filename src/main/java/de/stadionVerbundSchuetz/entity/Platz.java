@@ -1,4 +1,4 @@
-package de.StadionverbandSchuetz.entity;
+package de.stadionVerbundSchuetz.entity;
 
 import javafx.util.Pair;
 import lombok.Getter;

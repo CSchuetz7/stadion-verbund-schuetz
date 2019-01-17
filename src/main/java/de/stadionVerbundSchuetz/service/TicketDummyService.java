@@ -1,8 +1,8 @@
-package de.StadionverbandSchuetz.service;
-import de.StadionverbandSchuetz.entity.Block;
-import de.StadionverbandSchuetz.entity.Buchung;
-import de.StadionverbandSchuetz.entity.Stadion;
-import de.StadionverbandSchuetz.exceptions.KeineRueckmeldungBeimTicketVersenden;
+package de.stadionVerbundSchuetz.service;
+import de.stadionVerbundSchuetz.entity.Block;
+import de.stadionVerbundSchuetz.entity.Buchung;
+import de.stadionVerbundSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.exceptions.KeineRueckmeldungBeimTicketVersenden;
 import lombok.Getter;
 import lombok.Setter;
 

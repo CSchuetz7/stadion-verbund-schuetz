@@ -1,12 +1,12 @@
-package de.StadionverbandSchuetz.ui.model;
+package de.stadionVerbundSchuetz.ui.model;
 
-import de.StadionverbandSchuetz.converter.KategorieKonvertierer;
-import de.StadionverbandSchuetz.converter.StadionKonvertierer;
-import de.StadionverbandSchuetz.entity.Block;
-import de.StadionverbandSchuetz.entity.Kategorie;
-import de.StadionverbandSchuetz.entity.Platz;
-import de.StadionverbandSchuetz.entity.Stadion;
-import de.StadionverbandSchuetz.service.SitzplatzService;
+import de.stadionVerbundSchuetz.converter.KategorieKonvertierer;
+import de.stadionVerbundSchuetz.converter.StadionKonvertierer;
+import de.stadionVerbundSchuetz.entity.Block;
+import de.stadionVerbundSchuetz.entity.Kategorie;
+import de.stadionVerbundSchuetz.entity.Platz;
+import de.stadionVerbundSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.service.SitzplatzService;
 import lombok.Getter;
 import lombok.Setter;
 

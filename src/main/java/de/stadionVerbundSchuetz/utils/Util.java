@@ -1,6 +1,6 @@
-package de.StadionverbandSchuetz.utils;
+package de.stadionVerbundSchuetz.utils;
 
-import de.StadionverbandSchuetz.entity.Benutzer;
+import de.stadionVerbundSchuetz.entity.Benutzer;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;

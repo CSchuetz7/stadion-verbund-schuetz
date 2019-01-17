@@ -1,6 +1,6 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.*;
+import de.stadionVerbundSchuetz.entity.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;

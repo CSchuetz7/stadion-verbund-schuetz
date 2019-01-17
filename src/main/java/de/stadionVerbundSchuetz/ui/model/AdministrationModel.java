@@ -1,7 +1,7 @@
-package de.StadionverbandSchuetz.ui.model;
+package de.stadionVerbundSchuetz.ui.model;
 
-import de.StadionverbandSchuetz.service.AdministrationService;
-import de.StadionverbandSchuetz.service.BuchungService;
+import de.stadionVerbundSchuetz.service.AdministrationService;
+import de.stadionVerbundSchuetz.service.BuchungService;
 import lombok.Getter;
 import lombok.Setter;
 

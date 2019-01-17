@@ -1,7 +1,7 @@
-package de.StadionverbandSchuetz.converter;
+package de.stadionVerbundSchuetz.converter;
 
-import de.StadionverbandSchuetz.entity.Kategorie;
-import de.StadionverbandSchuetz.service.SitzplatzServiceIF;
+import de.stadionVerbundSchuetz.entity.Kategorie;
+import de.stadionVerbundSchuetz.service.SitzplatzServiceIF;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;

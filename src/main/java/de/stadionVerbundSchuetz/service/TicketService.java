@@ -1,10 +1,10 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Block;
-import de.StadionverbandSchuetz.entity.Buchung;
-import de.StadionverbandSchuetz.entity.Platz;
-import de.StadionverbandSchuetz.entity.Stadion;
-import de.StadionverbandSchuetz.exceptions.KeineRueckmeldungBeimTicketVersenden;
+import de.stadionVerbundSchuetz.entity.Block;
+import de.stadionVerbundSchuetz.entity.Buchung;
+import de.stadionVerbundSchuetz.entity.Platz;
+import de.stadionVerbundSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.exceptions.KeineRueckmeldungBeimTicketVersenden;
 import de.wsdl.ticketEckert.Ticket;
 import de.wsdl.ticketEckert.TicketauftragService;
 import de.wsdl.ticketEckert.TicketauftragServiceService;

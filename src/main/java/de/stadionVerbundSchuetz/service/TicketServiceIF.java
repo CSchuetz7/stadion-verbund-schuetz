@@ -1,6 +1,6 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Buchung;
+import de.stadionVerbundSchuetz.entity.Buchung;
 
 import java.io.Serializable;
 

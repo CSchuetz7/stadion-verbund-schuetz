@@ -1,12 +1,11 @@
-package de.StadionverbandSchuetz.ui.model;
+package de.stadionVerbundSchuetz.ui.model;
 
-import de.StadionverbandSchuetz.entity.Adresse;
-import de.StadionverbandSchuetz.entity.Benutzer;
-import de.StadionverbandSchuetz.service.BenutzerService;
-import de.StadionverbandSchuetz.utils.Util;
+import de.stadionVerbundSchuetz.entity.Adresse;
+import de.stadionVerbundSchuetz.entity.Benutzer;
+import de.stadionVerbundSchuetz.service.BenutzerService;
+import de.stadionVerbundSchuetz.utils.Util;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

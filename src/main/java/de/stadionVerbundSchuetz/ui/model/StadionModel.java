@@ -1,21 +1,19 @@
-package de.StadionverbandSchuetz.ui.model;
+package de.stadionVerbundSchuetz.ui.model;
 
-import de.StadionverbandSchuetz.converter.StadionKonvertierer;
-import de.StadionverbandSchuetz.entity.*;
-import de.StadionverbandSchuetz.exceptions.KonnteNichtGeloeschtWerdenFehler;
-import de.StadionverbandSchuetz.service.StadionService;
-import javafx.util.Pair;
+import de.stadionVerbundSchuetz.converter.StadionKonvertierer;
+import de.stadionVerbundSchuetz.entity.Adresse;
+import de.stadionVerbundSchuetz.entity.Platz;
+import de.stadionVerbundSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.exceptions.KonnteNichtGeloeschtWerdenFehler;
+import de.stadionVerbundSchuetz.service.StadionService;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

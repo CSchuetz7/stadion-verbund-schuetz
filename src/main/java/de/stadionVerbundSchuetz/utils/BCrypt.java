@@ -1,4 +1,4 @@
-package de.StadionverbandSchuetz.utils;
+package de.stadionVerbundSchuetz.utils;
 
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

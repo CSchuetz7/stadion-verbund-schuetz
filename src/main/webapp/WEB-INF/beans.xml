@@ -6,13 +6,13 @@
 
 
     <alternatives>
-        <class>de.StadionverbandSchuetz.service.TicketService</class>
+        <class>de.stadionVerbundSchuetz.service.TicketService</class>
     </alternatives>
 
 
 <!--
     <alternatives>
-        <class>de.StadionverbandSchuetz.service.TicketDummyService</class>
+        <class>de.stadionVerbundSchuetz.service.TicketDummyService</class>
     </alternatives>
 
 -->

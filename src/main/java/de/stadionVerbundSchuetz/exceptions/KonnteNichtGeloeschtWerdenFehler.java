@@ -1,4 +1,4 @@
-package de.StadionverbandSchuetz.exceptions;
+package de.stadionVerbundSchuetz.exceptions;
 
 public class KonnteNichtGeloeschtWerdenFehler extends Exception {
     public KonnteNichtGeloeschtWerdenFehler() { }

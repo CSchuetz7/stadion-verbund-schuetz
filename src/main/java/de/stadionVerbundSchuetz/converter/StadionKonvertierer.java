@@ -1,8 +1,8 @@
-package de.StadionverbandSchuetz.converter;
+package de.stadionVerbundSchuetz.converter;
 
-import de.StadionverbandSchuetz.entity.Stadion;
-import de.StadionverbandSchuetz.service.StadionServiceIF;
-import de.StadionverbandSchuetz.ui.model.StadionModel;
+import de.stadionVerbundSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.service.StadionServiceIF;
+import de.stadionVerbundSchuetz.ui.model.StadionModel;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;

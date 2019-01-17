@@ -1,6 +1,6 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.entity.Stadion;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;

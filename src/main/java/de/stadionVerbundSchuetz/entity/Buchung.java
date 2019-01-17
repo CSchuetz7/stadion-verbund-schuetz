@@ -1,6 +1,6 @@
-package de.StadionverbandSchuetz.entity;
+package de.stadionVerbundSchuetz.entity;
 
-import de.StadionverbandSchuetz.ui.model.StadionModel;
+import de.stadionVerbundSchuetz.ui.model.StadionModel;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package de.StadionverbandSchuetz.entity;
+package de.stadionVerbundSchuetz.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Adresse;
-import de.StadionverbandSchuetz.entity.Benutzer;
-import de.StadionverbandSchuetz.utils.BCrypt;
+import de.stadionVerbundSchuetz.entity.Adresse;
+import de.stadionVerbundSchuetz.entity.Benutzer;
+import de.stadionVerbundSchuetz.utils.BCrypt;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

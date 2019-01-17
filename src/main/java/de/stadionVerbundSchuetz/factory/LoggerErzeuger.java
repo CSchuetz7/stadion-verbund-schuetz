@@ -1,4 +1,4 @@
-package de.StadionverbandSchuetz.factory;
+package de.stadionVerbundSchuetz.factory;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;

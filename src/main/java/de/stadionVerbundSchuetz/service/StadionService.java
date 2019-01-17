@@ -1,8 +1,8 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Buchung;
-import de.StadionverbandSchuetz.entity.Platz;
-import de.StadionverbandSchuetz.entity.Stadion;
+import de.stadionVerbundSchuetz.entity.Buchung;
+import de.stadionVerbundSchuetz.entity.Platz;
+import de.stadionVerbundSchuetz.entity.Stadion;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

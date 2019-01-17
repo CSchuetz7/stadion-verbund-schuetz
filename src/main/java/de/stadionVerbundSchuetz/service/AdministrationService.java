@@ -1,10 +1,10 @@
-package de.StadionverbandSchuetz.service;
+package de.stadionVerbundSchuetz.service;
 
-import de.StadionverbandSchuetz.entity.Buchung;
-import de.StadionverbandSchuetz.ui.model.BenutzerModel;
-import de.StadionverbandSchuetz.ui.model.BuchungModel;
-import de.StadionverbandSchuetz.ui.model.SitzplatzModel;
-import de.StadionverbandSchuetz.ui.model.StadionModel;
+import de.stadionVerbundSchuetz.entity.Buchung;
+import de.stadionVerbundSchuetz.ui.model.BenutzerModel;
+import de.stadionVerbundSchuetz.ui.model.BuchungModel;
+import de.stadionVerbundSchuetz.ui.model.SitzplatzModel;
+import de.stadionVerbundSchuetz.ui.model.StadionModel;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
