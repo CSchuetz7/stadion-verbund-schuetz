@@ -55,6 +55,14 @@ public class SitzplatzService implements SitzplatzServiceIF {
         entityManager.merge(stadion);
         logger.log(Level.INFO, "Block und Platz angelegt");
     }
+    @Transactional
+    public void bloeckeHinzufuegen(Stadion stadion, List<Block> bloecke) {
+        List<Block> tempBloecke = stadion.getBloecke();
+        tempBloecke.addAll(bloecke);
+        stadion.setBloecke(tempBloecke);
+        entityManager.merge(stadion);
+        logger.log(Level.INFO, "Block und Platz angelegt");
+    }
 
     public List<Kategorie> findeKategorienNachStadion(Stadion stadion) {
         TypedQuery<Kategorie> query = entityManager.createQuery("SELECT k FROM Kategorie AS k where stadionKategorie = :stadion and stadionKategorie = :stadion", Kategorie.class);

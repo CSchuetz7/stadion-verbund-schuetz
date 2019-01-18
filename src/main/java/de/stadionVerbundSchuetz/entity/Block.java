@@ -31,17 +31,13 @@ public class Block implements Serializable {
 
   @Getter
   @Setter
-  @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+  @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval = true)
   private Platz plaetze;
 
-  @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.DETACH)
+  @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.DETACH)
   @Getter
   @Setter
   private Kategorie kategorie;
-
- /* public enum Ausrichtung {
-    Nord, Süd, West, Ost, NordOst, SüdOst, SüdWest, NordWest
-  }*/
 
   @ManyToOne(fetch = FetchType.EAGER)
   @Getter

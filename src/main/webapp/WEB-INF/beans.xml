@@ -4,17 +4,15 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        bean-discovery-mode="annotated">
 
-
     <alternatives>
         <class>de.stadionVerbundSchuetz.service.TicketService</class>
     </alternatives>
 
+    <!--
+        <alternatives>
+            <class>de.stadionVerbundSchuetz.service.TicketDummyService</class>
+        </alternatives>
 
-<!--
-    <alternatives>
-        <class>de.stadionVerbundSchuetz.service.TicketDummyService</class>
-    </alternatives>
-
--->
+    -->
 
 </beans>

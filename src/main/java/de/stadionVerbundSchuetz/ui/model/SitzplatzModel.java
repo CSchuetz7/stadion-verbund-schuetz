@@ -45,18 +45,6 @@ public class SitzplatzModel implements Serializable {
     @Setter
     private Boolean inBearbeitungBlockPlatz;
 
-    @Getter
-    @Setter
-    private String strassenname;
-    @Getter
-    @Setter
-    private String hausnummer;
-    @Getter
-    @Setter
-    private String plz;
-    @Getter
-    @Setter
-    private String ort;
 
     @Getter
     @Setter
@@ -121,19 +109,36 @@ public class SitzplatzModel implements Serializable {
 
     @Getter
     @Setter
-    private int anzahlPlaetzeProReihe;
+    private int anzahlPlaetzeProReihe = 1;
     @Getter
     @Setter
-    private int anzahlReihe;
+    private int anzahlReihe = 1;
 
     public void initialisieren() {
-        if (this.stadionService.getStadionListe() != null) {
+        if (this.stadionService.getStadionListe() != null && this.stadionService.getStadionListe().size() > 0) {
             this.stadionListe = stadionService.getStadionListe();
         } else {
             this.stadionListe = stadionService.findeAlleStadien();
         }
-            this.kategorieListe = sitzplatzService.findeAlleKategorien();
-            this.blockListe = sitzplatzService.findeAlleBloecke();
+        this.kategorieListe = sitzplatzService.findeAlleKategorien();
+        this.blockListe = sitzplatzService.findeAlleBloecke();
+        if (this.stadion == null && this.stadionListe.size() > 0) {
+            stadion = stadionListe.get(0);
+            for (Kategorie ka : this.kategorieListe) {
+                if (this.stadion.getStadion_id() == ka.getStadionKategorie().getStadion_id()) {
+                    this.kategorie = ka;
+                    break;
+                }
+            }
+        } else if (this.stadion != null) {
+            for (Kategorie ka : this.kategorieListe) {
+                if (this.stadion.getStadion_id() == ka.getStadionKategorie().getStadion_id()) {
+                    this.kategorie = ka;
+                    break;
+                }
+            }
+
+        }
     }
 
     private void aktualisiereKategorie() {

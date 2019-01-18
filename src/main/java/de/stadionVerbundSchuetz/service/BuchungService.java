@@ -81,16 +81,9 @@ public class BuchungService {
         // return null;
     }
 
-    @WebMethod(exclude = true)
-    public List<Stadion> findePassendesStadion(int benoetigteSitzplaetze) {
-        TypedQuery<Stadion> query = entityManager.createQuery("SELECT s FROM Stadion AS s where s.plaetze.size > :benoetigteSitzplaetze", Stadion.class);
-        query.setParameter("benoetigteSitzplaetze", benoetigteSitzplaetze);
-        List<Stadion> queryErgebnis = query.getResultList();
-        return queryErgebnis;
-    }
-
     public Stadion bucheStadionAutomatisch(@WebParam(name = "spielId") long spielId, @WebParam(name = "anzahlZuschauer") int anzahlZuschauer, @WebParam(name = "spielDatum") Date spielDatum) {
         try {
+            //Prüfen auf Datum in der Vergangenheit zurzeit nicht eingebaut, da sonst Effekt beim Abschluss einer Wette nicht möglich (hinzufügen von spielDatum.compareTo(new Date()) >= 0)
             if (anzahlZuschauer > 0 && spielDatum != null && spielId >= 0) {
                 if (pruefeSpielIdVorhanden(spielId).size() == 0) {
                     // if (benutzerService.anmelden(email, passwort) != null) {

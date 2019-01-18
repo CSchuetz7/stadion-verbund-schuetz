@@ -32,9 +32,6 @@ public class AdministrationModel implements Serializable {
   @Inject
   BuchungService buchungService;
 
-  @Inject
-  StadionService stadionService;
-
   @Getter
   @Setter
   private String selectString;
@@ -53,9 +50,13 @@ public class AdministrationModel implements Serializable {
       FacesContext.getCurrentInstance().addMessage("AdminFenster:SelectId", new FacesMessage("Es ist ein Fehler bei ihrem Select Befehl aufgetreten"));
     }
   }
-  //Schnelle Erzeugung von sinnvollen Daten
+  //Schnelle Erzeugung von sinnvollen Daten (Stadien, Kategorie, Block und Platz)
   public void erzeugeStadienDaten(){
     administrationService.erzeugeStadienDaten();
+  }
+
+  public void alleBuchungenLoeschen(){
+    administrationService.alleBuchungenLöschen();
   }
 
   public void testBuchung() {
