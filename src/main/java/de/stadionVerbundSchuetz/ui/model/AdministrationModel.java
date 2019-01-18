@@ -1,7 +1,11 @@
 package de.stadionVerbundSchuetz.ui.model;
 
+import de.stadionVerbundSchuetz.entity.Adresse;
+import de.stadionVerbundSchuetz.entity.Kategorie;
+import de.stadionVerbundSchuetz.entity.Stadion;
 import de.stadionVerbundSchuetz.service.AdministrationService;
 import de.stadionVerbundSchuetz.service.BuchungService;
+import de.stadionVerbundSchuetz.service.StadionService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,12 +14,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Named
@@ -27,6 +31,9 @@ public class AdministrationModel implements Serializable {
 
   @Inject
   BuchungService buchungService;
+
+  @Inject
+  StadionService stadionService;
 
   @Getter
   @Setter
@@ -45,6 +52,10 @@ public class AdministrationModel implements Serializable {
     if (resultSelectString == null) {
       FacesContext.getCurrentInstance().addMessage("AdminFenster:SelectId", new FacesMessage("Es ist ein Fehler bei ihrem Select Befehl aufgetreten"));
     }
+  }
+  //Schnelle Erzeugung von sinnvollen Daten
+  public void erzeugeStadienDaten(){
+    administrationService.erzeugeStadienDaten();
   }
 
   public void testBuchung() {

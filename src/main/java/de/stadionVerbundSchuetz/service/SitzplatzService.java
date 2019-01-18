@@ -3,14 +3,11 @@ package de.stadionVerbundSchuetz.service;
 import de.stadionVerbundSchuetz.entity.*;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,21 +23,16 @@ public class SitzplatzService implements SitzplatzServiceIF {
 
     public List<Platz> findeAllePlaetze() {
         TypedQuery<Platz> query = entityManager.createQuery("SELECT p FROM Platz AS p", Platz.class);
-        List<Platz> queryErgebnis = query.getResultList();
-        return queryErgebnis;
-        // return null;
+        return query.getResultList();
     }
 
     public List<Block> findeAlleBloecke() {
         TypedQuery<Block> query = entityManager.createQuery("SELECT b FROM Block AS b", Block.class);
-        List<Block> queryErgebnis = query.getResultList();
-        return queryErgebnis;
-        // return null;
+        return query.getResultList();
     }
 
     public Kategorie findeKategorie(long kategorieNr) {
-        Kategorie gefunden = entityManager.find(Kategorie.class, kategorieNr);
-        return gefunden;
+        return entityManager.find(Kategorie.class, kategorieNr);
     }
 
     public List<Kategorie> findeAlleKategorien() {
@@ -51,11 +43,8 @@ public class SitzplatzService implements SitzplatzServiceIF {
     }
 
     public List<Platz> findePlaetze() {
-        /* TypedQuery<Platz> query = entityManager.createQuery("SELECT p FROM Platz AS p left join Block as b on p.block.id = b.id left join Kategorie as k on b.kategorie.id = k.id", Platz.class);  */
         TypedQuery<Platz> query = entityManager.createQuery("SELECT count(p) FROM Platz AS p", Platz.class);
-        List<Platz> queryErgebnis = query.getResultList();
-        return queryErgebnis;
-        // return null;
+        return  query.getResultList();
     }
 
     @Transactional
@@ -65,21 +54,6 @@ public class SitzplatzService implements SitzplatzServiceIF {
         stadion.setBloecke(tempBloecke);
         entityManager.merge(stadion);
         logger.log(Level.INFO, "Block und Platz angelegt");
-    /*Block tempBlock = new Block();
-    tempBlock.setAusrichtung(block.getAusrichtung());
-    tempBlock.setKategorie(kategorie);
-    tempBlock.setName(block.getName());
-    Platz tempPlatz = new Platz();
-    tempPlatz.setAnzahlReihe(platz.getAnzahlReihe());
-    tempPlatz.setAnzahlSitzeReihe(platz.getAnzahlSitzeReihe());
-    tempPlatz.setStadionPlatz(stadion);
-    entityManager.persist(tempPlatz);
-    tempBlock.setPlaetze(tempPlatz);
-    tempBlock.setStadionBlock(stadion);
-    List<Block> stadionBloecke = stadion.getBloecke();
-    stadionBloecke.add(tempBlock);
-    stadion.setBloecke(stadionBloecke);
-    entityManager.merge(stadion);*/
     }
 
     public List<Kategorie> findeKategorienNachStadion(Stadion stadion) {
@@ -93,7 +67,7 @@ public class SitzplatzService implements SitzplatzServiceIF {
         query.setParameter("stadion", stadion);
         List<Kategorie> tempKategorie = query.getResultList();
         for (Kategorie item : tempKategorie) {
-            if (kategorie.getName().equals(item.getName()) && kategorie.getKategorienr() == item.getKategorienr()){
+            if ((kategorie.getName().equals(item.getName()) && kategorie.getKategorienr() == item.getKategorienr()) ||  (kategorie.getKategorienr() == item.getKategorienr()) || (kategorie.getName().equals(item.getName()))){
                 return true;
             }
         }
@@ -110,6 +84,25 @@ public class SitzplatzService implements SitzplatzServiceIF {
             return null;
         }
     }
+
+    public Boolean pruefeObBlockPlatzDatenSchonVorhanden(Block block) {
+        TypedQuery<Block> query = entityManager.createQuery("SELECT b FROM Block AS b where block_id != :block_id and stadionBlock = :stadion", Block.class);
+        //Abfrage mit Stadion_id um gleiches zu bearbeitendes Stadion zu ignorieren, da ja Daten gleich sind
+        query.setParameter("block_id", block.getBlock_id());
+        query.setParameter("stadion", block.getStadionBlock());
+        List<Block> queryResult = query.getResultList();
+        if (queryResult.size() > 0) {
+            for (Block item : queryResult) {
+                if (block.getName().equals(item.getName())){
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
 
     public Boolean pruefeObKategorieDatenSchonVorhanden(Kategorie kategorie) {
         TypedQuery<Kategorie> query = entityManager.createQuery("SELECT k FROM Kategorie AS k where kategorie_id != :kategorie", Kategorie.class);
@@ -201,14 +194,5 @@ public class SitzplatzService implements SitzplatzServiceIF {
             return null;
         }
     }
-
-  /* @Transactional
-  public void platzHinzufuegen(Stadion stadion, Platz platz){
-    *//*List <Platz> plaetze = stadion.getPlaetze();
-    plaetze.add(platz);
-    stadion.setPlaetze(plaetze);*//*
-    stadion.getPlaetze().add(platz);
-    entityManager.merge(stadion);
-  } */
 
 }

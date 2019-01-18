@@ -89,7 +89,7 @@ public class BenutzerModel implements Serializable {
         this.benutzer = null;
         return "anmelden";
     }
-
+    //Methoden zum schnellen Erzeugen eines Admins für Devs
     public String erzeugeAdmin(){
         this.email = "admin@StadionverbundSchuetz.de";
         this.name = "Mitarbeiter";
@@ -102,6 +102,7 @@ public class BenutzerModel implements Serializable {
         anmelden();
         return "profil";
     }
+    //Methoden zum schnellen Erzeugen eines Gasts für Devs
     public String erzeugeGast(){
         this.email = "gast@gmail.com";
         this.name = "Sportverband Test";

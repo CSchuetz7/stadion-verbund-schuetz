@@ -13,8 +13,10 @@
             <div class="container mx-auto">
             <div class="align-middle col-md-6 offset-md-3 mt-3">
                 <h:form id="AnmeldeFenster">
-                    <h:message style="background-color:red; color:white;margin-bottom:10px;" class="form-control"
-                               for="AnmeldeId"></h:message>
+                    <h:messages
+                            style="color:white; background-color: #ff523e; margin-bottom:1em; list-style: none; height:auto"
+                            class="form-control" globalOnly="false" showDetail="false"
+                            showSummary="true" errorClass="err" warnClass="warn" infoClass="info"/>
                         <div class="form-group">
                                 <label>E-Mail</label>
                                 <h:inputText class="form-control" value="#{benutzerModel.email}"/>

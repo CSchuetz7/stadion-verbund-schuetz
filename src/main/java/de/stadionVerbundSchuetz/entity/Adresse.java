@@ -37,11 +37,6 @@ public class Adresse implements Serializable {
 
   @Override
   public String toString() {
-    return "Adresse{" +
-            ", strassenname='" + strassenname + '\'' +
-            ", hausnummer='" + hausnummer + '\'' +
-            ", plz='" + plz + '\'' +
-            ", ort='" + ort + '\'' +
-            '}';
+    return strassenname+" "+hausnummer+", "+plz+" "+ort;
   }
 }

@@ -136,10 +136,10 @@ public class SitzplatzModel implements Serializable {
             this.blockListe = sitzplatzService.findeAlleBloecke();
     }
 
-    public void aktualisiereKategorie() {
+    private void aktualisiereKategorie() {
         this.kategorieListe = sitzplatzService.findeAlleKategorien();
     }
-    public void aktualisiereBlockPlatz() {
+    private void aktualisiereBlockPlatz() {
         this.blockListe = sitzplatzService.findeAlleBloecke();
     }
 
@@ -180,23 +180,28 @@ public class SitzplatzModel implements Serializable {
                     Kategorie tempKategorie = this.kategorie;
                     Platz tempPlatz = new Platz(anzahlPlaetzeProReihe, anzahlReihe, this.stadion);
                     Block tempBlock = new Block(this.blockName, this.ausrichtung, tempPlatz, tempKategorie, this.stadion);
-                    try {
-
-                        this.sitzplatzService.blockHinzufuegen(this.stadion, tempBlock);
-                    } catch (Exception e) {
-                        logger.log(Level.INFO, "Exception: " + e.toString());
-                    }
+                    if (!sitzplatzService.pruefeObBlockPlatzDatenSchonVorhanden(tempBlock)){
+                        try {
+                            this.sitzplatzService.blockHinzufuegen(this.stadion, tempBlock);
+                        } catch (Exception e) {
+                            logger.log(Level.INFO, "Exception: " + e.toString());
+                            return null;
+                        }
                     return "angelegt";
                 } else {
-                    FacesContext.getCurrentInstance().addMessage("StadionAnlegenFenster:AnlegenId", new FacesMessage("Füllen Sie bitte alle Eingabefelder aus!"));
+                        FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Ein Block mit diesem Namen für das Stadion ist schon vorhanden"));
+                        return null;
+                    }
+                } else {
+                    FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Füllen Sie bitte alle Eingabefelder aus!"));
                     return null;
                 }
             } else {
-                FacesContext.getCurrentInstance().addMessage("kategorieAnlegenForm:AnlegenId", new FacesMessage("Legen Sie zuerst eine Kategorie an"));
+                FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Legen Sie zuerst eine Kategorie an"));
                 return null;
             }
         } else {
-            FacesContext.getCurrentInstance().addMessage("kategorieAnlegenForm:AnlegenId", new FacesMessage("Legen Sie zuerst ein Stadion an"));
+            FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Legen Sie zuerst ein Stadion an"));
             return null;
         }
     }
@@ -229,15 +234,6 @@ public class SitzplatzModel implements Serializable {
         }
     }
 
-    public Object findePlaetze() {
-        try {
-            return sitzplatzService.findePlaetze();
-        } catch (Exception e) {
-            logger.log(Level.INFO, "Exception: " + e.toString());
-            return null;
-        }
-    }
-
     public void inAenderungVorbereitenBlockPlatz(Block block) {
         this.inBearbeitungBlockPlatz = true;
         this.stadion = block.getStadionBlock();
@@ -261,8 +257,12 @@ public class SitzplatzModel implements Serializable {
             tempBlock.setKategorie(this.kategorie);
             tempBlock.setName(this.blockName);
             tempBlock.setAusrichtung(this.ausrichtung);
-            sitzplatzService.aendernBlockPlatz(tempBlock);
-            aktualisiereBlockPlatz();
+            if (!sitzplatzService.pruefeObBlockPlatzDatenSchonVorhanden(tempBlock)) {
+                sitzplatzService.aendernBlockPlatz(tempBlock);
+                aktualisiereBlockPlatz();
+            } else {
+                FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Ein Block mit diesen Daten ist schon vorhanden, eine Bearbeitung ist mit diesen Daten nicht möglich"));
+            }
         } else {
             FacesContext.getCurrentInstance().addMessage("blockPlatzAnlegenForm:AnlegenId", new FacesMessage("Füllen Sie bitte alle Eingabefelder aus!"));
         }
@@ -300,7 +300,7 @@ public class SitzplatzModel implements Serializable {
                 sitzplatzService.aendernKategorie(tempKategorie);
                 aktualisiereKategorie();
             } else{
-                FacesContext.getCurrentInstance().addMessage("kategorieAnlegenForm", new FacesMessage("Ein Stadion mit diesen Daten ist schon vorhanden, eine Bearbeitung ist mit diesen Daten nicht möglich"));
+                FacesContext.getCurrentInstance().addMessage("kategorieAnlegenForm", new FacesMessage("Eine Kategorie mit diesen Daten ist schon vorhanden, eine Bearbeitung ist mit diesen Daten nicht möglich"));
             }
         } else {
             FacesContext.getCurrentInstance().addMessage("kategorieAnlegenForm", new FacesMessage("Füllen Sie bitte alle Eingabefelder aus!"));

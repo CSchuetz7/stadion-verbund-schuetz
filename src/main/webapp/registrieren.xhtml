@@ -15,9 +15,10 @@
         <div class="container">
             <div class="align-middle col-md-6 offset-md-3 mt-3">
                 <h:form id="registerForm">
-                    <h:messages style="list-style: none;" class="form-control alert-danger m-2" globalOnly="false"
-                                showDetail="false" showSummary="true"></h:messages>
-
+                    <h:messages
+                            style="color:white; background-color: #ff523e; margin-bottom:1em; list-style: none; height:auto"
+                            class="form-control" globalOnly="false" showDetail="false"
+                            showSummary="true" errorClass="err" warnClass="warn" infoClass="info"/>
                     <div class="form-group">
                         <label>E-Mail</label>
                         <h:inputText id="email" class="form-control" pt:placeholder="name@example.com" value="#{benutzerModel.email}"/>

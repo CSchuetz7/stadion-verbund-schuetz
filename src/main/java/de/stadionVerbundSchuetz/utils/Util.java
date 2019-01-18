@@ -16,17 +16,18 @@ public class Util {
             return null;
     }
 
-
+    /*
     public static HttpServletRequest findeAnfrage() {
         return (HttpServletRequest) FacesContext.
                 getCurrentInstance().
                 getExternalContext().getRequest();
-    }
+    }*/
 
+    /*
     public static String findeBenutzername() {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         return session.getAttribute("benutzer").toString();
-    }
+    } */
 
     public static HttpSession findeSitzung() {
         return (HttpSession)
