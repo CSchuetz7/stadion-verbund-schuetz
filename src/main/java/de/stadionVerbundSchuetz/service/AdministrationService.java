@@ -2,15 +2,9 @@ package de.stadionVerbundSchuetz.service;
 
 import de.stadionVerbundSchuetz.entity.*;
 import de.stadionVerbundSchuetz.ui.model.BenutzerModel;
-import de.stadionVerbundSchuetz.ui.model.BuchungModel;
-import de.stadionVerbundSchuetz.ui.model.SitzplatzModel;
-import de.stadionVerbundSchuetz.ui.model.StadionModel;
-
-import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.*;
-import javax.persistence.RollbackException;
 import javax.transaction.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +24,6 @@ public class AdministrationService {
     @Inject
     BenutzerModel benutzerModel;
 
-    @Inject
-    SitzplatzModel sitzplatzModel;
 
     @Inject
     SitzplatzService sitzplatzService;
@@ -39,8 +31,6 @@ public class AdministrationService {
     @Inject
     StadionService stadionService;
 
-    @Resource
-    UserTransaction utx;
 
     @Transactional
     public void loescheAlles() {
@@ -98,8 +88,6 @@ public class AdministrationService {
             for (Stadion item : stadien) {
                 stadionService.anlegen(item);
             }
-            List<Kategorie> kategorien = new ArrayList<>();
-            // public Kategorie(int kategorienr, Boolean stehplatz, String name, double preis, Stadion stadion)
             TypedQuery<Stadion> query = em.createQuery("SELECT s FROM Stadion AS s", Stadion.class);
             List<Stadion> resultStadien = query.getResultList();
             if (query.getResultList().size() > 0) {

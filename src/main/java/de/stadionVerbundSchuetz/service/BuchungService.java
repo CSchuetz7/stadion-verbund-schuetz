@@ -7,7 +7,6 @@ import de.stadionVerbundSchuetz.entity.Stadion;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

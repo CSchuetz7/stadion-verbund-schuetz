@@ -2,8 +2,6 @@ package de.stadionVerbundSchuetz.converter;
 
 import de.stadionVerbundSchuetz.entity.Stadion;
 import de.stadionVerbundSchuetz.service.StadionServiceIF;
-import de.stadionVerbundSchuetz.ui.model.StadionModel;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

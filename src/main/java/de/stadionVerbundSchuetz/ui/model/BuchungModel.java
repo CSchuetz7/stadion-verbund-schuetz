@@ -4,7 +4,6 @@ import de.stadionVerbundSchuetz.converter.StadionKonvertierer;
 import de.stadionVerbundSchuetz.entity.Buchung;
 import de.stadionVerbundSchuetz.entity.Stadion;
 import de.stadionVerbundSchuetz.service.BuchungService;
-import de.stadionVerbundSchuetz.service.TicketDummyService;
 import de.stadionVerbundSchuetz.service.TicketServiceIF;
 import de.stadionVerbundSchuetz.utils.Util;
 import lombok.Getter;

@@ -3,12 +3,8 @@ package de.stadionVerbundSchuetz.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Embeddable;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Embeddable
 public class Adresse implements Serializable {

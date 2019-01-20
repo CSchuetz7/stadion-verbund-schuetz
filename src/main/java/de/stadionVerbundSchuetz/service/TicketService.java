@@ -2,7 +2,6 @@ package de.stadionVerbundSchuetz.service;
 
 import de.stadionVerbundSchuetz.entity.Block;
 import de.stadionVerbundSchuetz.entity.Buchung;
-import de.stadionVerbundSchuetz.entity.Platz;
 import de.stadionVerbundSchuetz.entity.Stadion;
 import de.stadionVerbundSchuetz.exceptions.KeineRueckmeldungBeimTicketVersenden;
 import de.wsdl.ticketEckert.Ticket;

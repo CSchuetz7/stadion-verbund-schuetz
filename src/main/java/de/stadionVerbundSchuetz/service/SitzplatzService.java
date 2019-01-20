@@ -114,7 +114,7 @@ public class SitzplatzService implements SitzplatzServiceIF {
 
     public Boolean pruefeObKategorieDatenSchonVorhanden(Kategorie kategorie) {
         TypedQuery<Kategorie> query = entityManager.createQuery("SELECT k FROM Kategorie AS k where kategorie_id != :kategorie", Kategorie.class);
-        //Abfrage mit Stadion_id um gleiches zu bearbeitendes Stadion zu ignorieren, da ja Daten gleich sind
+        //Abfrage mit kategorie_id um gleiches zu bearbeitendes Stadion zu ignorieren, da ja Daten gleich sind
         query.setParameter("kategorie", kategorie.getKategorie_id());
         List<Kategorie> queryResult = query.getResultList();
         Boolean vorhandenFlag = false;
