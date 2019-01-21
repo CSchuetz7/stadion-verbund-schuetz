@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,7 +79,6 @@ public class BenutzerService {
         TypedQuery<Benutzer> query = entityManager.createQuery("SELECT b FROM Benutzer AS b", Benutzer.class);
         List<Benutzer> queryErgebnis = query.getResultList();
         return queryErgebnis;
-        // return null;
     }
 
     @Transactional
@@ -90,7 +88,7 @@ public class BenutzerService {
 
     /*
         passwortgenerator
-        https://gist.github.com/craSH/5217757
+        https://gist.githubusercontent.com/craSH/5217757/raw/be22e275d9db38a6d1f60a04c6711bd5f7bb3f43/Password.java
     */
 
     @Transactional

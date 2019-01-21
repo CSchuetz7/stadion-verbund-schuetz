@@ -10,7 +10,7 @@ public class LoggerErzeuger {
 
     @Produces
     public Logger produceLogger(InjectionPoint injectionPoint) {
-        return Logger.getLogger(injectionPoint.getClass().getName());
+        return Logger.getLogger("stadionVerbundSchuetz");
     }
 }
 

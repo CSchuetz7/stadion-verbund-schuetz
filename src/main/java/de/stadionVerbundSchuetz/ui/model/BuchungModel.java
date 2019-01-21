@@ -4,7 +4,6 @@ import de.stadionVerbundSchuetz.converter.StadionKonvertierer;
 import de.stadionVerbundSchuetz.entity.Buchung;
 import de.stadionVerbundSchuetz.entity.Stadion;
 import de.stadionVerbundSchuetz.service.BuchungService;
-import de.stadionVerbundSchuetz.service.TicketDummyService;
 import de.stadionVerbundSchuetz.service.TicketServiceIF;
 import de.stadionVerbundSchuetz.utils.Util;
 import lombok.Getter;
@@ -50,9 +49,7 @@ public class BuchungModel implements Serializable {
     @Setter
     private Date spieldatum;
 
-    @Getter
-    @Setter
-    private Date buchungdatum;
+
     @Getter
     @Setter
     private Stadion stadion;
@@ -67,7 +64,7 @@ public class BuchungModel implements Serializable {
     private List<Stadion> stadionListe;
 
     public void initialisieren() {
-        if (stadionService.getStadionListe() != null) {
+        if (this.stadionService.getStadionListe() != null && stadionService.getStadionListe().size() > 0) {
             this.stadionListe = stadionService.getStadionListe();
         } else {
             this.stadionListe = stadionService.findeAlleStadien();
@@ -100,7 +97,7 @@ public class BuchungModel implements Serializable {
                         Buchung tempBuchung = new Buchung(this.spielid, this.spieldatum, new Date(), this.stadion, Util.findeBenutzer(), false);
                         buchungService.anlegen(tempBuchung);
                         aktualisiereBuchung();
-                        return "angelegt";
+                        return "buchungAnzeigen";
                     } else {
                         FacesContext.getCurrentInstance().addMessage("buchungAnlegenForm:AnlegenId", new FacesMessage("Spieldatum liegt in der Vergangenheit"));
                         return null;

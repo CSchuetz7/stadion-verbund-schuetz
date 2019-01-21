@@ -14,10 +14,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,9 +29,6 @@ public class AdministrationModel implements Serializable {
 
   @Inject
   BuchungService buchungService;
-
-  @Inject
-  StadionService stadionService;
 
   @Getter
   @Setter
@@ -53,9 +48,13 @@ public class AdministrationModel implements Serializable {
       FacesContext.getCurrentInstance().addMessage("AdminFenster:SelectId", new FacesMessage("Es ist ein Fehler bei ihrem Select Befehl aufgetreten"));
     }
   }
-  //Schnelle Erzeugung von sinnvollen Daten
+  //Schnelle Erzeugung von sinnvollen Daten (Stadien, Kategorie, Block und Platz)
   public void erzeugeStadienDaten(){
     administrationService.erzeugeStadienDaten();
+  }
+
+  public void alleBuchungenLoeschen(){
+    administrationService.alleBuchungenLöschen();
   }
 
   public void testBuchung() {

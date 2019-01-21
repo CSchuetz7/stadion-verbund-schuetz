@@ -4,9 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Objects;
@@ -31,17 +28,13 @@ public class Block implements Serializable {
 
   @Getter
   @Setter
-  @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+  @OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval = true)
   private Platz plaetze;
 
-  @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.DETACH)
+  @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.DETACH)
   @Getter
   @Setter
   private Kategorie kategorie;
-
- /* public enum Ausrichtung {
-    Nord, Süd, West, Ost, NordOst, SüdOst, SüdWest, NordWest
-  }*/
 
   @ManyToOne(fetch = FetchType.EAGER)
   @Getter
